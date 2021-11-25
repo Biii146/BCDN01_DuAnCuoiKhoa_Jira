@@ -31,16 +31,3 @@
     border: 1px solid #7be0f0 !important;
 }
 
-button{
-    border: 1px solid #0eb9d3;
-    background-color: #0eb9d3;
-    color: black;
-    width: 65px;
-    height: 35px;
-    border-radius: 2px;
-
-}
-button:hover{
-    color: white;
-    border: 1px solid #7be0f0;
-}
