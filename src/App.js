@@ -25,7 +25,7 @@ function App() {
         <HomeTemplate exact path="/projectmanagement" component={ProjectManagement} />
         <HomeTemplate exact path="/createproject" component={CreateProject} />
         <HomeTemplate exact path="/cyberboard" component={CyberBoard} />
-        <HomeTemplate exact path="/projectdetail/:id" component={ProjectDetail} />
+        <HomeTemplate exact path="/projectdetail/" component={ProjectDetail} />
         <HomeTemplate exact path="/createtask" component={CreateTask} />
         <HomeTemplate exact path="/edit/task" component={EditTask} />
         <UserTemplate exact path="/useradmin" component={UserAdmin} />

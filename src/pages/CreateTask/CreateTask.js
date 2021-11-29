@@ -84,7 +84,7 @@ export default function CreateTask() {
                     </div>
                     <div className="col-6">
                         <h6>Time tracking</h6>
-                        <Slider defaultValue={30} tooltipVisible />
+                        <Slider defaultValue={30} tooltipVisible/>
                     </div>
                 </div>
             </div>
