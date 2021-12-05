@@ -27,7 +27,7 @@ function App() {
         <HomeTemplate exact path="/cyberboard" component={CyberBoard} />
         <HomeTemplate exact path="/projectdetail/" component={ProjectDetail} />
         <HomeTemplate exact path="/createtask" component={CreateTask} />
-        <HomeTemplate exact path="/edit/task" component={EditTask} />
+        <HomeTemplate exact path="/edittask" component={EditTask} />
         <UserTemplate exact path="/useradmin" component={UserAdmin} />
 
         {/* Trang chủ */}
