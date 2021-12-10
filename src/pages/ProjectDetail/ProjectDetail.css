@@ -1,0 +1,55 @@
+h6{
+    font-weight: bolder;
+}
+
+/* task header */
+.task-number i{
+    color: rgb(89, 168, 10);
+}
+.task-icon a{
+    text-decoration: none;
+    color: black;
+}
+.task-icon a:hover{
+    text-decoration: none;
+    color: #0eb9d3;
+    font-weight: 700;
+}
+
+/* task type */
+.ant-radio-group-solid .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {
+    color: #fff;
+    background: #0eb9d3 !important;
+    border-color: #0eb9d3!important;
+}
+
+.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):hover {
+    color: #fff !important;
+    border-color: #0eb9d3 !important;
+}
+#exampleInputEmail1:hover{
+    border: 1px solid rgb(14,185,211);
+}
+.time-tracking{
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #5e6469;
+}
+  
+.time-tracking h6{
+    font-size: 14px;
+    color: #3d3d3d;
+}
+  
+.fa-clock{
+    margin-right: 10px;
+}
+  
+.progress{
+    height: 5px!important;
+    width: 100%;
+}
+  
+.logged, .estimate-time{
+    font-size: 14px;
+}
