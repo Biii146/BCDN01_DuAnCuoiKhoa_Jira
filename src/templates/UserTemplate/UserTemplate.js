@@ -6,7 +6,7 @@ export default function UserTemplate(props) {
         <div>
             <Route exact path={props.path} render={(propsRoute) => {
                 return <Fragment>
-                    user
+                    
                     <props.component {...propsRoute}/>
                 </Fragment>
             }}/>

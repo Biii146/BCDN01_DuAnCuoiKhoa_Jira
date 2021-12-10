@@ -1,0 +1,33 @@
+.wrap-login{
+    background-image: url(../../assets/Images/bg.jpg);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-size: cover;
+}
+.layout-login{
+    background-color: rgba(0, 0, 0, 0.301);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.login-form{ 
+    background-color: white;
+    width: 30%;
+    height: 80%;
+    position: absolute;
+    border-radius: 3px;
+    align-items: center;
+    justify-content: center;
+}
+.form-login{
+    border: 1px solid #0eb9d3;
+}
+.form-login:hover{
+    border: 1px solid #7be0f0 !important;
+}
+
