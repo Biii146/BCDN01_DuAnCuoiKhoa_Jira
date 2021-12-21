@@ -30,6 +30,13 @@ h6{
 #exampleInputEmail1:hover{
     border: 1px solid rgb(14,185,211);
 }
+
+.ant-input:hover{
+  border: 1px solid #0eb9d3 !important;
+} 
+.ant-select-selector:hover{
+  border: 1px solid #0eb9d3 !important;
+}
 .time-tracking{
     padding-bottom: 10px;
     margin-bottom: 10px;

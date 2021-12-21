@@ -1,0 +1,1 @@
+export const DOMAIN = 'http://jiranew.cybersoft.edu.vn/swagger/'

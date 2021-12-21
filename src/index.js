@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 
 // Redux
 import { Provider } from 'react-redux';
-import { store } from './redux/configStore';
+import  store from './redux/configStore';
 
 // Ant Design
 import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
