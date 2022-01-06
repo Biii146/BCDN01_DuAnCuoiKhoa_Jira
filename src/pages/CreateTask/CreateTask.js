@@ -1,6 +1,7 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import { Select, Slider } from 'antd';
+
 
 
 
@@ -26,6 +27,11 @@ export default function CreateTask() {
     }
 
     const [size, setSize] = React.useState('default');
+
+    const [timeTracking,setTimeTracking] = useState({
+        timeTrackingSpent:0,
+        timeTrackingRemaining:0
+    })
 
     return (
         <div className="container">
@@ -84,8 +90,13 @@ export default function CreateTask() {
                     </div>
                     <div className="col-6">
                         <h6>Time tracking</h6>
-                        <Slider defaultValue={30} tooltipVisible/>
+                        <Slider defaultValue={30} value={timeTracking.timeTrackingSpent} max={Number(timeTracking.timeTrackingSpent)+ Number(timeTracking.timeTrackingRemaining)}/>
+                        <div className="row" style={{fontSize:"12px", marginTop:"-2px"}}>
+                        <div className="col-6 text-left font-weight-bold">{timeTracking.timeTrackingSpent}h logged</div>
+                        <div className="col-6 text-right font-weight-bold">{timeTracking.timeTrackingRemaining}h remaining</div>
                     </div>
+                    </div>
+                    
                 </div>
             </div>
             <div className="form-group">
@@ -98,11 +109,21 @@ export default function CreateTask() {
                     <div className="row">
                         <div className="col-6">
                             <h6>Time spent</h6>
-                            <input className="form-control" type="number" name="timeTrackingSpent" defaultValue="0" min="0" />
+                            <input className="form-control" type="number" name="timeTrackingSpent" defaultValue="0" min="0" onChange={(e) => {
+                                setTimeTracking({
+                                    ...timeTracking,
+                                    timeTrackingSpent:e.target.value
+                                })
+                            }} />
                         </div>
                         <div className="col-6">
                             <h6>Time estimate</h6>
-                            <input className="form-control" type="number" name="timeTrackingRemaining" defaultValue="0" min="0" />
+                            <input className="form-control" type="number" name="timeTrackingRemaining" defaultValue="0" min="0" onChange={(e) => {
+                                setTimeTracking({
+                                    ...timeTracking,
+                                    timeTrackingRemaining:e.target.value
+                                })
+                            }}  />
                         </div>
                     </div>
                 </div>

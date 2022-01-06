@@ -1,6 +1,8 @@
+import React,{useState,useEffect} from 'react'
+import useDispatch from 'react-redux'
 import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Switch, useHistory } from 'react-router-dom'
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import ProjectManagement from './pages/ProjectManagement/ProjectManagement';
@@ -16,8 +18,18 @@ import LoginTemplate from './templates/LoginTemplate/LoginTemplate';
 
 
 function App() {
+  const history = useHistory()
+  const dispatch = useDispatch()
+
+  useEffect(()=>{
+    dispatch({
+      type: 'ADD_HISTORY',
+      history: history
+    })
+  },[])
+
   return (
-    <BrowserRouter>
+    <>
       <Switch>
 
         <LoginTemplate exact path="/register" component={Register} />
@@ -36,7 +48,7 @@ function App() {
 
       </Switch>
 
-    </BrowserRouter>
+    </>
 
 
   );
