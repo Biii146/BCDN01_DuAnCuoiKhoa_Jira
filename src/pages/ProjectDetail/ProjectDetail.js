@@ -39,8 +39,9 @@ export default function ProjectDetail(props) {
         console.log('changed', value);
     }
 
+   
     return (
-        <div className="container">
+        <div className="container modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModal" aria-hidden="true">
             <div className="row">
                 <div className="col-7">
                     <div>
@@ -54,7 +55,7 @@ export default function ProjectDetail(props) {
                     </div>
                     <div className="task-type">
                         <h4>Task type</h4>
-                        <Radio.Group defaultValue="a" buttonStyle="solid">
+                        <Radio.Group  defaultValue="a" buttonStyle="solid">
                             <Radio.Button value="a">
                                 <i class="fa fa-exclamation-circle"></i>
                                 <span className="ml-1">Bug</span>

@@ -13,6 +13,8 @@ import UserAdmin from './pages/UserAdmin/UserAdmin';
 import HomeTemplate from './templates/HomeTemplate/HomeTemplate';
 import UserTemplate from './templates/UserTemplate/UserTemplate';
 import LoginTemplate from './templates/LoginTemplate/LoginTemplate';
+import CyberBugsTemplate from './templates/HomeTemplate/CyberBugsTemplate';
+import MainMenu from './components/MainMenu/MainMenu';
 
 
 function App() {
@@ -21,17 +23,19 @@ function App() {
       <Switch>
 
         <LoginTemplate exact path="/register" component={Register} />
-        <LoginTemplate exact path="/login" component={Login} />
-        <HomeTemplate exact path="/projectmanagement" component={ProjectManagement} />
-        <HomeTemplate exact path="/createproject" component={CreateProject} />
+        <CyberBugsTemplate exact path="/mainmenu" component={MainMenu} />
+        <CyberBugsTemplate exact path="/projectmanagement" component={ProjectManagement} />
+        <CyberBugsTemplate exact path="/createproject" component={CreateProject} />
         <HomeTemplate exact path="/cyberboard" component={CyberBoard} />
-        <HomeTemplate exact path="/projectdetail/" component={ProjectDetail} />
+        <HomeTemplate exact path="/projectdetail" component={ProjectDetail} />
         <HomeTemplate exact path="/createtask" component={CreateTask} />
         <HomeTemplate exact path="/edittask" component={EditTask} />
-        <UserTemplate exact path="/useradmin" component={UserAdmin} />
+        <CyberBugsTemplate exact path="/useradmin" component={UserAdmin} />
 
         {/* Trang chủ */}
-        <HomeTemplate exact path="/" component={ProjectManagement} />
+        {/* <HomeTemplate exact path="/" component={ProjectManagement} /> */}
+        <LoginTemplate exact path="/" component={Login} />
+
 
 
       </Switch>
