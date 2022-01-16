@@ -1,6 +1,7 @@
-import logo from './logo.svg';
+
 import './App.css';
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import { BrowserRouter, Route, Router, Switch , useHistory } from 'react-router-dom'
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import ProjectManagement from './pages/ProjectManagement/ProjectManagement';
@@ -13,30 +14,45 @@ import UserAdmin from './pages/UserAdmin/UserAdmin';
 import HomeTemplate from './templates/HomeTemplate/HomeTemplate';
 import UserTemplate from './templates/UserTemplate/UserTemplate';
 import LoginTemplate from './templates/LoginTemplate/LoginTemplate';
+import CyberBugsTemplate from './templates/HomeTemplate/CyberBugsTemplate';
+import MainMenu from './components/MainMenu/MainMenu';
+import LoadingComponent from './components/GlobalSetting/LoadingComponent/LoadingComponent';
+import {useDispatch} from 'react-redux'
 
 
 function App() {
+  const history = useHistory();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch({ type: "ADD_HISTORY", history: history });
+  }, [])
+
+
   return (
-    <BrowserRouter>
+    // dùng history để xử lý đăng nhập chuyển hướng trang sẽ dễ hơn
+    <>
+    {/* <LoadingComponent/> */}
       <Switch>
 
         <LoginTemplate exact path="/register" component={Register} />
-        <LoginTemplate exact path="/login" component={Login} />
-        <HomeTemplate exact path="/projectmanagement" component={ProjectManagement} />
-        <HomeTemplate exact path="/createproject" component={CreateProject} />
+        <CyberBugsTemplate exact path="/mainmenu" component={MainMenu} />
+        <CyberBugsTemplate exact path="/projectmanagement" component={ProjectManagement} />
+        <CyberBugsTemplate exact path="/createproject" component={CreateProject} />
         <HomeTemplate exact path="/cyberboard" component={CyberBoard} />
-        <HomeTemplate exact path="/projectdetail/:id" component={ProjectDetail} />
+        <HomeTemplate exact path="/projectdetail" component={ProjectDetail} />
         <HomeTemplate exact path="/createtask" component={CreateTask} />
-        <HomeTemplate exact path="/edit/task" component={EditTask} />
-        <UserTemplate exact path="/useradmin" component={UserAdmin} />
+        <HomeTemplate exact path="/edittask" component={EditTask} />
+        <CyberBugsTemplate exact path="/useradmin" component={UserAdmin} />
 
         {/* Trang chủ */}
-        <HomeTemplate exact path="/" component={ProjectManagement} />
+        {/* <HomeTemplate exact path="/" component={ProjectManagement} /> */}
+        <LoginTemplate exact path="/" component={Login} />
+
 
 
       </Switch>
 
-    </BrowserRouter>
+    </>
 
 
   );
