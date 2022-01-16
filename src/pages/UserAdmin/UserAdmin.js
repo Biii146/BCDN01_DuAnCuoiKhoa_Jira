@@ -42,7 +42,7 @@ export default function UserAdmin() {
                 </div>
                 <div className="search-form py-3" style={{ display: "flex" }}>
                     <Input />
-                    <button className="ml-2">Search</button>
+                    <button className="ml-2 buttoncomponent">Search</button>
                 </div>
                 <div className="table py-3">
                     <table className="table table-striped">
@@ -62,8 +62,8 @@ export default function UserAdmin() {
                                 <td>Mark</td>
                                 <td>0829302182</td>
                                 <td>
-                                    <button style={{borderRadius:"50%"}}><i class="fa fa-user-edit"></i></button>
-                                    <button className="ml-2" style={{ backgroundColor: "crimson", border: "1px solid crimson" }}><i class="fa fa-user-times"></i></button>
+                                    <button style={{borderRadius:"50%"}}><i className="fa fa-user-edit"></i></button>
+                                    <button className="ml-2 buttoncomponent" style={{ backgroundColor: "crimson", border: "1px solid crimson" }}><i class="fa fa-user-times"></i></button>
                                 </td>
                             </tr>
                             <tr>
@@ -72,8 +72,8 @@ export default function UserAdmin() {
                                 <td>Mark</td>
                                 <td>0829302182</td>
                                 <td>
-                                    <button style={{borderRadius:"50%"}}><i class="fa fa-user-edit"></i></button>
-                                    <button className="ml-2" style={{ backgroundColor: "crimson", border: "1px solid crimson" }}><i class="fa fa-user-times"></i></button>
+                                    <button style={{borderRadius:"50%"}}><i className="fa fa-user-edit"></i></button>
+                                    <button className="ml-2 buttoncomponent" style={{ backgroundColor: "crimson", border: "1px solid crimson" }}><i class="fa fa-user-times"></i></button>
                                 </td>                           
                             </tr>
                             <tr>
@@ -82,8 +82,8 @@ export default function UserAdmin() {
                                 <td>Mark</td>
                                 <td>0829302182</td>
                                 <td>
-                                    <button style={{borderRadius:"50%"}}><i class="fa fa-user-edit"></i></button>
-                                    <button className="ml-2" style={{ backgroundColor: "crimson", border: "1px solid crimson" }}><i class="fa fa-user-times"></i></button>
+                                    <button style={{borderRadius:"50%"}}><i className="fa fa-user-edit"></i></button>
+                                    <button className="ml-2 buttoncomponent" style={{ backgroundColor: "crimson", border: "1px solid crimson" }}><i class="fa fa-user-times"></i></button>
                                 </td>                            
                             </tr>
                         </tbody>
