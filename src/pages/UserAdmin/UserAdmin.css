@@ -25,3 +25,12 @@
     width: 40px;
     height: 40px;
 }
+.buttoncomponent{
+  border: 1px solid #0eb9d3;
+  background-color: #0eb9d3;
+  color: black;
+  width: 65px;
+  height: 35px;
+  border-radius: 2px;
+
+}

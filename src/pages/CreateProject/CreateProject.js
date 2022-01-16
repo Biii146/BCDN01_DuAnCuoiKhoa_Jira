@@ -3,6 +3,7 @@ import { Editor } from "@tinymce/tinymce-react";
 import {withFormik} from 'formik';
 import * as Yup from 'yup';
 import {connect, useSelector, useDispatch} from 'react-redux'
+import { Button } from "antd";
 
 
  function CreateProject(props) {
@@ -71,9 +72,9 @@ import {connect, useSelector, useDispatch} from 'react-redux'
             })}
           </select>
         </div>
-        <button type="submit" className="btn btn-primary">
+        <Button type="submit" className="btn btn-primary">
           Save
-        </button>
+        </Button>
       </form>
     </div>
   );
