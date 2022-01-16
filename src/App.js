@@ -1,6 +1,7 @@
-import logo from './logo.svg';
+
 import './App.css';
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import { BrowserRouter, Route, Router, Switch , useHistory } from 'react-router-dom'
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import ProjectManagement from './pages/ProjectManagement/ProjectManagement';
@@ -15,11 +16,22 @@ import UserTemplate from './templates/UserTemplate/UserTemplate';
 import LoginTemplate from './templates/LoginTemplate/LoginTemplate';
 import CyberBugsTemplate from './templates/HomeTemplate/CyberBugsTemplate';
 import MainMenu from './components/MainMenu/MainMenu';
+import LoadingComponent from './components/GlobalSetting/LoadingComponent/LoadingComponent';
+import {useDispatch} from 'react-redux'
 
 
 function App() {
+  const history = useHistory();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch({ type: "ADD_HISTORY", history: history });
+  }, [])
+
+
   return (
-    <BrowserRouter>
+    // dùng history để xử lý đăng nhập chuyển hướng trang sẽ dễ hơn
+    <>
+    {/* <LoadingComponent/> */}
       <Switch>
 
         <LoginTemplate exact path="/register" component={Register} />
@@ -40,7 +52,7 @@ function App() {
 
       </Switch>
 
-    </BrowserRouter>
+    </>
 
 
   );

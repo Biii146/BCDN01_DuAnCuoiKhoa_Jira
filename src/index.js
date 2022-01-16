@@ -10,13 +10,20 @@ import { store } from './redux/configStore';
 
 // Ant Design
 import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
+import { BrowserRouter } from 'react-router-dom';
+import axios, { Axios } from 'axios';
 
+axios.interceptors.request.use((request)=>{
+  console.log(request);
+  return request;
+})
 
 ReactDOM.render(
+  <BrowserRouter>
   <Provider store={store}>
     <App />
   </Provider>
-  ,
+  </BrowserRouter>,
   document.getElementById('root')
 );
 

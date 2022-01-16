@@ -2,17 +2,19 @@ import React from 'react'
 import "./UserAdmin.css"
 import { Menu, Dropdown, Input, Pagination } from 'antd';
 import { CaretDownOutlined } from '@ant-design/icons';
+import { useSelector } from 'react-redux';
 
 
 export default function UserAdmin() {
+    const userLogin = useSelector(state => state.UserLoginJiraReducer.userLogin);
     const menu = (
         <Menu>
             <Menu.Item key="0">
-                <a href="https://www.antgroup.com">1st menu item</a>
+                <a href="#">profile</a>
             </Menu.Item>
             <hr />
             <Menu.Item key="1">
-                <a href="https://www.aliyun.com">Logout</a>
+                <a href="/">Logout</a>
             </Menu.Item>
             
         </Menu>
@@ -22,8 +24,8 @@ export default function UserAdmin() {
         <div className="container" >
             <div className="container user-header py-1" style={{ display: "flex", justifyContent: "flex-end" }}>
                 <div className="mr-5">
-                    <span className="mr-2">Hi, User Name</span>
-                    <img src="https://i.pravatar.cc/150?u=" alt="" style={{ borderRadius: "50%", width: "30px" }} className="mr-2" />
+                    <span className="mr-2">{userLogin?.name}</span>
+                    <img src={userLogin?.avatar} alt="" style={{ borderRadius: "50%", width: "30px" }} className="mr-2" />
                     <Dropdown overlay={menu} trigger={['click']}>
                         <a className="ant-dropdown-link" style={{ color: "#232121" }} onClick={e => e.preventDefault()}>
                             <CaretDownOutlined />

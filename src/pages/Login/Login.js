@@ -11,6 +11,7 @@ import { signinCyberbugAction } from '../../redux/actions/JiraAction';
 
 
 
+
  function Login(props) {
     const { values, touched, errors, handleSubmit, handleChange, handleBlur } = props;
 
@@ -65,10 +66,10 @@ const LoginWithFormik = withFormik({
   handleSubmit: ({email, password}, {props,setSubmitting }) => {
     
     // từ jiraAction
+    // có thể thêm props.history vào tham số dưới
     props.dispatch(signinCyberbugAction(email, password));
-    
   },
-  displayName: "Login cyberBugs",
+  displayName: "LogincyberBugs",
 })(Login);
 
 export default connect()(LoginWithFormik);

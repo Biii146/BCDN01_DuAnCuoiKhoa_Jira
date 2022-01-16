@@ -8,39 +8,40 @@ import {connect, useSelector, useDispatch} from 'react-redux'
  function CreateProject(props) {
      const arrProjectCategory = useSelector(state=>state.ProjectCategoryReducer.arrProjectCategory);
      const dispatch = useDispatch();
-     console.log("ket qua", arrProjectCategory);
+     
     const {
-        values,
-        touched,
-        errors,
-        handleSubmit, 
-        handleChange,
-        handleBlur,
-
+      values,
+      touched,
+      errors,
+      handleSubmit,
+      handleChange,
+      handleBlur,
+      setFieldValue,
     } = props;
 
     useEffect(() =>{
         // goi API de lay the selec
-        dispatch({ type: "GET_ALL_PROJECT_CATEGORY_SAGA" });
+        dispatch({ type: 'GET_ALL_PROJECT_CATEGORY_SAGA'});
         
     },[]);
     
     const handleEditorChange = (content, editor) => {
-        
+        setFieldValue("description",content);
     }
   return (
     <div className="container m-3 mt-5">
       <h3>Create Project</h3>
-      <form className="container" onSubmit={handleSubmit}>
+      <form className="container" onSubmit={handleSubmit} onchange={handleChange}>
         <div className="form-group">
           <p>Name</p>
-          <input className="form-control" name="projectName" />
+          <input className="form-control" name="projectName" onChange={handleChange} />
         </div>
         <div className="form-group">
           <p>Description</p>
           <Editor
             name="description"
             init={{
+              selector: 'textarea#myTextArea',
               height: 300,
               menubar: false,
               plugins: [
@@ -60,8 +61,8 @@ import {connect, useSelector, useDispatch} from 'react-redux'
           />
         </div>
         <div className="form-group">
-          <select name="categoryId" className="form-control">
-            {arrProjectCategory.map((item, index) => {
+          <select name="categoryId" className="form-control" onChange={handleChange}>
+            {arrProjectCategory?.map((item, index) => {
               return (
                 <option value={item.id} key={index}>
                   {item.projectCategoryName}
@@ -78,16 +79,34 @@ import {connect, useSelector, useDispatch} from 'react-redux'
   );
 }
 const createProjectForm = withFormik({
-    mapPropsToValues: () => ({
-        
-    }),
+  enableReinitialize:true,
+    mapPropsToValues: (props) => {
+      console.log('propsValues',props);
+        return {
+
+          "projectName": '',
+          "description": '',
+          "categoryId": props.arrProjectCategory[0]?.id,
+        };
+    },
     validationSchema: Yup.object().shape({
 
     }),
-    handleSubmit: (value, {props, setSubmitting}) => {
+    handleSubmit: (values, {props, setSubmitting}) => {
+      console.log("demo",values);
+       props.dispatch({ 
+            type: 'CREATE_PROJECT_SAGA',
+            newProject: values 
+        })
 
     },
     displayName: 'createProjectFormik',
 })(CreateProject);
 
-export default connect()(createProjectForm);
+const mapStateToProps = (state) => ({
+  
+      arrProjectCategory:state.ProjectCategoryReducer.arrProjectCategory
+  
+})
+
+export default connect(mapStateToProps)(createProjectForm);
