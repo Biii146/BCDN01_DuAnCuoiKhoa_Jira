@@ -12,5 +12,6 @@ export function* rootSaga() {
     UserJiraSaga.theoDoiSignin(),
     ProjectCategorySaga.theoDoigetAllProjectCategory(),
     ProjectSaga.theoDoiCreateProjectSaga(),
+    ProjectSaga.theodoiGetListProjectSaga(),
   ]);
 }

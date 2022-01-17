@@ -1,35 +1,61 @@
-import React from 'react'
+import React,{useEffect} from 'react'
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import "../../index.css"
+import "../../index.css";
+
 
 export default function Menu() {
+  const userLogin = useSelector(state => state.UserLoginJiraReducer.userLogin);
     return (
       <div className="menu">
         <div className="account">
           <div className="avatar">
-            <img src={require("../../assets/Images/download.jfif").default} alt="1" />
+            <img src={userLogin?.avatar} alt="1" />
           </div>
           <div className="account-info">
-            <p>CyberLearn.vn</p>
-            <p>Report bugs</p>
+            <p className="mt-2">{userLogin?.name}</p>
           </div>
         </div>
         <div className="control">
           <div>
             <i className="fa fa-credit-card mr-1" />
-            <NavLink className="text-dark" to="/mainmenu" activeClassName="active font-weight-bold">Cyber Board</NavLink>
+            <NavLink
+              className="text-dark"
+              to="/mainmenu"
+              activeClassName="active font-weight-bold"
+            >
+              Cyber Board
+            </NavLink>
           </div>
           <div>
             <i className="fa fa-cog mr-1" />
-            <NavLink className="text-dark" to="/projectmanagement" activeClassName="active font-weight-bold">Project management</NavLink>
+            <NavLink
+              className="text-dark"
+              to="/projectmanagement"
+              activeClassName="active font-weight-bold"
+            >
+              Project management
+            </NavLink>
           </div>
           <div>
             <i className="fa fa-cog mr-1" />
-            <NavLink className="text-dark" to="/createproject" activeClassName="active font-weight-bold">Create Project</NavLink>
+            <NavLink
+              className="text-dark"
+              to="/createproject"
+              activeClassName="active font-weight-bold"
+            >
+              Create Project
+            </NavLink>
           </div>
-           <div>
+          <div>
             <i class="fas fa-users-cog mr-1"></i>
-            <NavLink className="text-dark" to="/useradmin" activeClassName="active font-weight-bold">User Admin</NavLink>
+            <NavLink
+              className="text-dark"
+              to="/useradmin"
+              activeClassName="active font-weight-bold"
+            >
+              User Admin
+            </NavLink>
           </div>
         </div>
         <div className="feature">

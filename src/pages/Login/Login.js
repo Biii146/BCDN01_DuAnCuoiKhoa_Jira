@@ -31,7 +31,7 @@ import { signinCyberbugAction } from '../../redux/actions/JiraAction';
                             <span>Do not have an account? <NavLink to="/register" alt="#">Sign Up</NavLink> </span>
                         </Space>
                         <div className="btn-login py-2">
-                            <Button htmlType="submit" size="large" style={{ minWidth: 200, backgroundColor: 'rgb(102,117,223)', color: '#fff' }} className="mt-3">Login</Button>
+                            <Button htmlType="submit"  size="large" style={{ minWidth: 200, backgroundColor: 'rgb(102,117,223)', color: '#fff' }} className="mt-3">Login</Button>
                         </div>
                         <div style={{position:'absolute', bottom:'20px', left:'40%'}}> 
                             <p>Or login with:</p>

@@ -72,9 +72,9 @@ import { Button } from "antd";
             })}
           </select>
         </div>
-        <Button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-primary">
           Save
-        </Button>
+        </button>
       </form>
     </div>
   );
