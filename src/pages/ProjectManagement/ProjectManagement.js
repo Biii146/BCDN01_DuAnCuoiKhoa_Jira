@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, } from "react";
 import { Table, Button, Space, Tag } from "antd";
 // import ReactHtmlParser from "react-html-parser";
 import {DeleteOutlined, EditOutlined, } from '@ant-design/icons'
 import { useSelector, useDispatch } from "react-redux";
+import FormEditProject from "../../components/Forms/FormEditProject";
 
 
 
@@ -56,11 +57,24 @@ export default function ProjectManagement(props) {
       title: "id",
       dataIndex: "id",
       key: "id",
+      sorter: (item2,item1)=>{
+          return item2.id - item1.id;
+      },
+      sortDirections: ['descend']
     },
     {
       title: "projectName",
       dataIndex: "projectName",
       key: "projectName",
+      sorter:(item2,item1)=>{
+        let projectName1 = item1.projectName?.trim().toLowerCase();
+        let projectName2 = item2.projectName?.trim().toLowerCase();
+        if(projectName2 < projectName1){
+          return -1;
+        }
+        return 1;
+      },
+      sortDirections: ['descend']
     },
     {
       title: "category",
@@ -77,20 +91,25 @@ export default function ProjectManagement(props) {
     {
       title: "Action",
       key: "action",
-      render: (text, record, index) => (
-        <Space size="middle">
-          <a href="#">
-            <button className="btn btn-info">
-              <EditOutlined />
+      render: (text, record, index) => {
+        return <div>
+            <button className="btn mr-2 btn-info" onClick={()=>{
+                  const aciton = {
+                    type: 'OPEN_FORM_EDIT_PROJECT',
+                    Component: <FormEditProject/>      
+                  }
+                  // dispatch lên reducer nộng dung drawer
+                  dispatch(aciton);
+                  
+
+              }}>
+              <EditOutlined style={{fontSize: 17}}/>
             </button>
-          </a>
-          <a href="#">
-            <button className="btn btn-danger">
+            <button className="btn btn-danger mr-2">
               <DeleteOutlined />
             </button>
-          </a>
-        </Space>
-      ),
+        </div>
+      },
     },
   ];
 
