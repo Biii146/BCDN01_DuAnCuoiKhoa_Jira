@@ -71,7 +71,7 @@ export default function ProjectManagement(props) {
       title: "caretor",
       key: "caretor",
       render:(text,record,index) =>{
-          return <Tag color="green" className="btn btn-danger">{record.cretor?.name}</Tag>;
+          return <Tag color="green" className="btn btn-danger">{record.creator?.name}</Tag>;
       }
     },
     {

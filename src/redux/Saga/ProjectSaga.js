@@ -19,8 +19,10 @@ function* createProjectSaga(action) {
     // gọi api thành công thì dispatch lên reducer thông qua hàm put
     if (status === STATUS_CODE.SUCCESS) {
       console.log(data);
+
       history.push('/projectmanagement');
     }
+    
   } catch (err) {
     console.log(err.response.data);
   }
