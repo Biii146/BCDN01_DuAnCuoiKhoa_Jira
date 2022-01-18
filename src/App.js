@@ -18,6 +18,7 @@ import CyberBugsTemplate from './templates/HomeTemplate/CyberBugsTemplate';
 import MainMenu from './components/MainMenu/MainMenu';
 import LoadingComponent from './components/GlobalSetting/LoadingComponent/LoadingComponent';
 import {useDispatch} from 'react-redux'
+import DrawerHOC from './HOC/DrawerHOC';
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
     // dùng history để xử lý đăng nhập chuyển hướng trang sẽ dễ hơn
     <>
     {/* <LoadingComponent/> */}
+    <DrawerHOC/>
       <Switch>
 
         <LoginTemplate exact path="/register" component={Register} />
