@@ -79,7 +79,7 @@ import { useSelector, useDispatch, connect } from "react-redux";
               <p className="font-weight-bold">Description</p>
               <Editor
                 name="description12"
-                initialValue={values.categoryId}
+                initialValue={values.description}
                 init={{
                   selector: "textarea#myTextArea",
                   height: 300,
@@ -122,7 +122,12 @@ const EditProjectForm = withFormik({
 
   }),
   handleSubmit: (values, { props, setSubmitting }) => {
-    console.log('values',values);
+      const action = {
+        type: "UPDATE_PROJECT_SAGA",
+        projectUpdate: values
+      };
+      // gọi saga 
+      props.dispatch(action);
   },
   displayName: "EditProjectForm",
 })(FormEditProject);

@@ -101,12 +101,21 @@ export default function ProjectManagement(props) {
                   // dispatch lên reducer nộng dung drawer
                   dispatch(aciton);
                   
+                  // dispatch dữ liệu hiện tại lên reducer
+                  const actionEditProject = {
+                    type:'EDIT_PROJECT',
+                    projectEditModel : record
+                  }
+                  dispatch(actionEditProject);
 
               }}>
               <EditOutlined style={{fontSize: 17}}/>
             </button>
             <button className="btn btn-danger mr-2">
-              <DeleteOutlined />
+              <DeleteOutlined  onClick={() => {
+                
+                    dispatch({ type: "DELETE_PROJECT_SAGA", idProject: record.id});
+              }}/>
             </button>
         </div>
       },
