@@ -4,6 +4,7 @@ import { cyberbugService } from "../../Services/CyberbugService";
 import { projectService } from "../../Services/ProjectService";
 import { STATUS_CODE } from "../../util/constants/settingSystem";
 import {history} from "../../util/history"
+import { notifiFunction } from "../../util/Notification/Notification";
 import {DISPLAY_LOADING, HIDE_LOADING} from "../constants/LoadingConst"
 
 
@@ -125,6 +126,8 @@ function* deleteProjectSaga(action) {
     // gọi api thành công thì dispatch lên reducer thông qua hàm put
     if (status === STATUS_CODE.SUCCESS) {
       console.log(data);
+
+      notifiFunction('success','Delete project successfuly!')
     }
     // chạy lại khi đã update dữ liệu
     yield put({
@@ -135,6 +138,7 @@ function* deleteProjectSaga(action) {
     });
   } catch (err) {
     console.log(err.response.data);
+    notifiFunction('error', 'Delete project fail')
   }
 
   yield put({
