@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Table, Button, Space, Tag } from "antd";
+import { Table, Button, Space, Tag, Avatar, Popover, AutoComplete } from "antd";
 // import ReactHtmlParser from "react-html-parser";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { useSelector, useDispatch } from "react-redux";
@@ -96,6 +96,27 @@ export default function ProjectManagement(props) {
       },
     },
     {
+      title:"members",
+      key:"members",
+      render:(text,record,index)=>{
+
+          return <div> 
+            {record.members?.slice(0,3).map((member,index)=>{
+              return <Avatar key={index} src={member.avatar}/>
+          })}
+          {/* dùng toán tử 3 ngôi */}
+           {record.members?.length>3? <Avatar>...</Avatar>: '' }
+
+           <Popover placement="topLeft" title={"Add user"} content={()=>{
+                return <AutoComplete style={{ width: "100%" }} />;
+           }} trigger="click">
+             <Button className="ml-2">+</Button>
+
+           </Popover>
+          </div>
+      }
+    },
+    {
       title: "Action",
       key: "action",
       render: (text, record, index) => {
@@ -106,7 +127,7 @@ export default function ProjectManagement(props) {
               onClick={() => {
                 const aciton = {
                   type: "OPEN_FORM_EDIT_PROJECT",
-                  Component: <FormEditProject />,
+                  Component: <FormEditProject />
                 };
                 // dispatch lên reducer nộng dung drawer
                 dispatch(aciton);
@@ -136,7 +157,6 @@ export default function ProjectManagement(props) {
                 <DeleteOutlined />
               </button>
             </Popconfirm>
-            ,
           </div>
         );
       },

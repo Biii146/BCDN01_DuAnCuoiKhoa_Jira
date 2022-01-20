@@ -25,7 +25,8 @@ function* createProjectSaga(action) {
     if (status === STATUS_CODE.SUCCESS) {
       console.log(data);
 
-      history.push('/projectmanagement');
+      notifiFunction("success", "Add project successfuly!");
+      // history.push('/projectmanagement');
     }
     
     
@@ -85,7 +86,7 @@ function* updateProjectSaga(action) {
     // gọi api thành công thì dispatch lên reducer thông qua hàm put
     if (status === STATUS_CODE.SUCCESS) {
       console.log(data);
-
+      notifiFunction("success", "Update project successfuly!");
     }
     // chạy lại khi đã update dữ liệu
     yield put({
