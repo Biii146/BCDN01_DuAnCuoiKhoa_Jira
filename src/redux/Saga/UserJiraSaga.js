@@ -1,6 +1,7 @@
 import Axios from 'axios'
 import { call, delay, fork, take, takeEvery, takeLatest, put, select } from 'redux-saga/effects';
 import { cyberbugService } from '../../Services/CyberbugService';
+import { userService } from '../../Services/UserServices';
 import { TOKEN, USER_LOGIN } from '../../util/constants/settingSystem';
 import { USER_SIGNIN_API, USLOGIN } from '../constants/JiraCyber';
 import { DISPLAY_LOADING, HIDE_LOADING } from '../constants/LoadingConst';
@@ -49,4 +50,60 @@ function * signinSaga(action) {
 
 export function * theoDoiSignin() {
     yield takeLatest(USER_SIGNIN_API,signinSaga );
+}
+
+
+
+function* getUserSaga(action) {
+  console.log(action);
+ 
+
+  // Call API
+  try {
+    const { data, status } = yield call(() =>
+      userService.getUser(action.keyWord)
+    );
+    console.log('data',data);
+    yield put({
+        type: 'GET_USER_SEARCH',
+        lstuserSearch: data.content
+    })
+   
+
+
+
+    // push vô trang khác khi login thành thông
+    // action.userLogin.history.push('/mainmenu');
+  } catch (err) {
+    console.log(err.response.data);
+  }
+  
+}
+
+
+export function* theoDoiGetUser(){
+      yield takeLatest("GET_USER_API",getUserSaga );
+}
+
+
+
+function* addUserProjectSaga(action) {
+  console.log(action);
+
+  // Call API
+  try {
+    const { data, status } = yield call(() =>
+      userService.assignUserProject(action.userProject)
+    );
+    yield put({
+      type:'GET_LIST_PROJECT_SAGA'
+    })
+
+  } catch (err) {
+    console.log(err.response.data);
+  }
+}
+
+export function* theoDoiAddUserProject() {
+  yield takeLatest("ADD_USER_PROJECT_API", addUserProjectSaga);
 }

@@ -9,7 +9,6 @@ import CreateProject from './pages/CreateProject/CreateProject';
 import CreateTask from './pages/CreateTask/CreateTask';
 import EditTask from './pages/EditTask/EditTask';
 import CyberBoard from './pages/CyberBoard/CyberBoard';
-import ProjectDetail from './pages/ProjectDetail/ProjectDetail';
 import UserAdmin from './pages/UserAdmin/UserAdmin';
 import HomeTemplate from './templates/HomeTemplate/HomeTemplate';
 import UserTemplate from './templates/UserTemplate/UserTemplate';
@@ -41,9 +40,9 @@ function App() {
         <CyberBugsTemplate exact path="/projectmanagement" component={ProjectManagement} />
         <CyberBugsTemplate exact path="/createproject" component={CreateProject} />
         <HomeTemplate exact path="/cyberboard" component={CyberBoard} />
-        <HomeTemplate exact path="/projectdetail" component={ProjectDetail} />
         <HomeTemplate exact path="/createtask" component={CreateTask} />
         <HomeTemplate exact path="/edittask" component={EditTask} />
+        <CyberBugsTemplate exact path='/projectdetail/:projectId' component={MainMenu}/>
         <CyberBugsTemplate exact path="/useradmin" component={UserAdmin} />
 
         {/* Trang chủ */}

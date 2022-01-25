@@ -5,15 +5,17 @@ import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { useSelector, useDispatch } from "react-redux";
 import FormEditProject from "../../components/Forms/FormEditProject";
 import { Popconfirm, message } from "antd";
-
-
-
+import { NavLink } from "react-router-dom";
 
 export default function ProjectManagement(props) {
   // lấy dữ liệu từ reducer về component
   const projectList = useSelector(
     (state) => state.ProjectCyberBugsReducer.projectList
   );
+
+  const { userSearch } = useSelector((state) => state.UserLoginJiraReducer);
+
+  const [value, setValue] = useState("");
 
   // sử dụng useDispatch để gọi action
   const dispatch = useDispatch();
@@ -69,6 +71,9 @@ export default function ProjectManagement(props) {
       title: "projectName",
       dataIndex: "projectName",
       key: "projectName",
+      render:(text,record,index)=>{
+          return <NavLink to={`/projectdetail/${record.id}`}>{text}</NavLink>;
+      },
       sorter: (item2, item1) => {
         let projectName1 = item1.projectName?.trim().toLowerCase();
         let projectName2 = item2.projectName?.trim().toLowerCase();
@@ -85,7 +90,7 @@ export default function ProjectManagement(props) {
       key: "categoryName",
     },
     {
-      title: "caretor",
+      title: "Creator",
       key: "caretor",
       render: (text, record, index) => {
         return (
@@ -96,25 +101,57 @@ export default function ProjectManagement(props) {
       },
     },
     {
-      title:"members",
-      key:"members",
-      render:(text,record,index)=>{
+      title: "members",
+      key: "members",
+      render: (text, record, index) => {
+        return (
+          <div>
+            {record.members?.slice(0, 3).map((member, index) => {
+              return <Avatar key={index} src={member.avatar} />;
+            })}
+            {/* dùng toán tử 3 ngôi */}
+            {record.members?.length > 3 ? <Avatar>...</Avatar> : ""}
 
-          return <div> 
-            {record.members?.slice(0,3).map((member,index)=>{
-              return <Avatar key={index} src={member.avatar}/>
-          })}
-          {/* dùng toán tử 3 ngôi */}
-           {record.members?.length>3? <Avatar>...</Avatar>: '' }
-
-           <Popover placement="topLeft" title={"Add user"} content={()=>{
-                return <AutoComplete style={{ width: "100%" }} />;
-           }} trigger="click">
-             <Button className="ml-2">+</Button>
-
-           </Popover>
+            <Popover
+              placement="topLeft"
+              title={"Add user"}
+              content={() => {
+                return (
+                  <AutoComplete
+                    options={userSearch?.map((user, index) => {
+                      return {
+                        label: user.name,
+                        value: user.userId.toString(),
+                      };
+                    })}
+                    value={value}
+                    onChange={(text) => {
+                      setValue(text);
+                    }}
+                    onSelect={(valueSelect, option) => {
+                      setValue(option.label);
+                      dispatch({
+                        type: "ADD_USER_PROJECT_API",
+                        userProject: {
+                          'projectId': record.id,
+                          'userId': valueSelect,
+                        },
+                      });
+                    }}
+                    style={{ width: "100%" }}
+                    onSearch={(value) => {
+                      dispatch({ type: "GET_USER_API", keyWord: value });
+                    }}
+                  />
+                );
+              }}
+              trigger="click"
+            >
+              <Button className="ml-2">+</Button>
+            </Popover>
           </div>
-      }
+        );
+      },
     },
     {
       title: "Action",
@@ -127,7 +164,7 @@ export default function ProjectManagement(props) {
               onClick={() => {
                 const aciton = {
                   type: "OPEN_FORM_EDIT_PROJECT",
-                  Component: <FormEditProject />
+                  Component: <FormEditProject />,
                 };
                 // dispatch lên reducer nộng dung drawer
                 dispatch(aciton);
