@@ -6,7 +6,7 @@ import { STATUS_CODE } from "../../util/constants/settingSystem";
 import {history} from "../../util/history"
 import { notifiFunction } from "../../util/Notification/Notification";
 import {DISPLAY_LOADING, HIDE_LOADING} from "../constants/LoadingConst"
-
+import { Alert } from "antd";
 
 function* createProjectSaga(action) {
   console.log('actionCreateProject',action);
@@ -176,7 +176,7 @@ function* getProjectDetailSaga(action) {
    })
     
   } catch (err) {
-    alert('fail!');
+    alert("You have not selected a project!");
   }
 
   yield put({

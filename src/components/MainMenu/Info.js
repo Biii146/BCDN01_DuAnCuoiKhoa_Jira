@@ -1,6 +1,15 @@
 import React from 'react'
 
 export default function Info(props) {
+  const renderAvatar = () => {
+    return props.members?.map((user, index) => {
+      return (
+        <div className="avatar" key={index}>
+          <img src={user.avatar} alt={user.avatar} />
+        </div>
+      );
+    });
+  };
     return (
       <div className="info" style={{ display: "flex" }}>
         <div className="search-block">
@@ -8,15 +17,7 @@ export default function Info(props) {
           <i className="fa fa-search" />
         </div>
         <div className="avatar-group" style={{ display: "flex" }}>
-          <div className="avatar">
-            <img src={require("../../assets/Images/download (1).jfif").default} alt="" />
-          </div>
-          <div className="avatar">
-            <img src={require("../../assets/Images/download (2).jfif").default} alt="" />
-          </div>
-          <div className="avatar">
-            <img src={require("../../assets/Images/download (3).jfif").default} alt="" />
-          </div>
+              {renderAvatar()}
         </div>
         <div style={{ marginLeft: 20 }} className="text">
           Only My Issues

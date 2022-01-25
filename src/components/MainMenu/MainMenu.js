@@ -24,9 +24,9 @@ export default function MainMenu(props) {
 
     return (
       <div className="main mt-5">
-        <Header />
-        <h3>Cyber Board</h3>
-        <Info />
+        <Header projectDetail={projectDetail} />
+        <h3>{projectDetail.projectName}</h3>
+        <Info members={projectDetail.members} />
         <Content />
       </div>
     );
