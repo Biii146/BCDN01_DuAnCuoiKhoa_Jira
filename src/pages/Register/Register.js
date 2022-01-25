@@ -14,7 +14,10 @@ export default function Register() {
                         email: '',
                         password: '',
                     }}
-                    render={()=>(
+                    onSubmit ={()=>{
+                        
+                    }}
+                    render={(formikProps)=>(
                         <div className="login-form text-center py-5 mx-auto">
                         <div>
                             <h2 style={{ fontWeight: "bold" }}>SIGN UP</h2>

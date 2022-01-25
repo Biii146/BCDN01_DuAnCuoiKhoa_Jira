@@ -10,10 +10,13 @@ export function* rootSaga() {
   yield all([
 
     UserJiraSaga.theoDoiSignin(),
+    UserJiraSaga.theoDoiGetUser(),
+    UserJiraSaga.theoDoiAddUserProject(),
     ProjectCategorySaga.theoDoigetAllProjectCategory(),
     ProjectSaga.theoDoiCreateProjectSaga(),
     ProjectSaga.theodoiGetListProjectSaga(),
     ProjectSaga.theoDoiUpdateProjectSaga(),
-    ProjectSaga.theoDoiDeleteProject()
+    ProjectSaga.theoDoiDeleteProject(),
+    ProjectSaga.theoDoiGetProjectDetail()
   ]);
 }
